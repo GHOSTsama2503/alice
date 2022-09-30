@@ -1,10 +1,8 @@
 from functools import partial
 from typing import Callable, Coroutine
-
 from pyrogram import Client
 from pyrogram.handlers.handler import Handler
-
-from logging import log, INFO, WARNING
+from modules.logger import log
 from inspect import getmembers, getfullargspec, isfunction, ismodule
 
 def add_plugins(client: Client, module: object, function_prefix: str = ""):
@@ -30,6 +28,6 @@ def add_plugins(client: Client, module: object, function_prefix: str = ""):
             filter = defaults[1]
             try:
                 client.add_handler(handler(function, filter))
-                log(INFO, f"Loaded: type={handler.__name__}, func={submodule_name}.{name}")
+                log.info(f"Loaded: type={handler.__name__}, func={submodule_name}.{name}")
             except:
-                log(WARNING, f"Failed to load: func={submodule_name}.{name}")
+                log.info(f"Failed to load: func={submodule_name}.{name}")
