@@ -17,7 +17,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if err = i18n.Load("locales"); err != nil {
+	if err = i18n.Init("./locales"); err != nil {
 		log.Fatal(err)
 	}
 
