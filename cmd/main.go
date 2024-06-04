@@ -5,6 +5,7 @@ import (
 	"alice/common/config"
 	"alice/database"
 	"alice/i18n"
+	"alice/modules"
 
 	"github.com/charmbracelet/log"
 	"gopkg.in/telebot.v3"
@@ -26,7 +27,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	database.Init()
+	_, err = database.Init()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err = modules.Init(); err != nil {
+		log.Fatal(err)
+	}
 
 	log.Infof("client @%s started! 🤖", bot.Me.Username)
 	bot.Start()
