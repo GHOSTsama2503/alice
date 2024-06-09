@@ -1,0 +1,14 @@
+{
+	"chat settings": "{{chat}} Settings",
+	"customize message": "Customize message",
+	"disable": "Disable",
+	"enable": "Enable",
+	"ok": "OK",
+	"saved message": "Message has been saved successfully.",
+	"send new welcome message": "Send new welcome message.",
+	"start message": "Hi {{user}}, I am {{me}}, a bot for group administration.",
+	"text is required": "The message cannot be empty.",
+	"welcome": "Welcome",
+	"welcome message required": "To enable the welcome message you must setup one",
+	"welcome settings": "Welcome settings:"
+}
