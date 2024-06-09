@@ -1,4 +1,14 @@
 {
-    "ok": "OK",
-    "start_message": "Hola {{user}}, Soy {{me}}, un bot para administración de grupos."
+	"chat settings": "Opciones de {{chat}}",
+	"customize message": "Personalizar mensaje",
+	"disable": "Desabilitar",
+	"enable": "Habilitar",
+	"ok": "OK",
+	"saved message": "Se ha guardado el mensaje correctamente.",
+	"send new welcome message": "Envie el nuevo mensaje de bienbenida.",
+	"start message": "Hola {{user}}, Soy {{me}}, un bot para administración de grupos.",
+	"text is required": "El mensaje no puede estar vacío.",
+	"welcome message required": "Para habilitar el mensaje de bienbenida es necesario configurar uno.",
+	"welcome settings": "Opciones de bienbenida:",
+	"welcome": "Bienbenida"
 }

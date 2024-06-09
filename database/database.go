@@ -5,6 +5,7 @@ import (
 	"alice/database/queries"
 	"database/sql"
 
+	"github.com/charmbracelet/log"
 	_ "github.com/tursodatabase/go-libsql"
 )
 
@@ -27,11 +28,18 @@ func Init() (*sql.DB, error) {
 }
 
 func CheckConnection() (*sql.DB, error) {
+
+	var err error
+
 	if !connected {
 		config.LoadEnv("../.env")
 
-		return Init()
+		Db, err = Init()
 	}
 
-	return Db, nil
+	if err != nil {
+		log.Error("error checking database connection", "err", err)
+	}
+
+	return Db, err
 }
