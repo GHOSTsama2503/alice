@@ -2,8 +2,8 @@ package main
 
 import (
 	"alice/client"
-	"alice/env"
-	"alice/handlers"
+	"alice/common/config"
+	"alice/database"
 	"alice/i18n"
 
 	"github.com/charmbracelet/log"
@@ -13,7 +13,7 @@ import (
 func main() {
 	var err error
 
-	if err = env.Load(); err != nil {
+	if err = config.LoadEnv(); err != nil {
 		log.Fatal(err)
 	}
 
@@ -26,8 +26,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	handlers.Use(bot)
+	database.Init()
 
-	log.Info("client started! 🤖")
+	log.Infof("client @%s started! 🤖", bot.Me.Username)
 	bot.Start()
 }
