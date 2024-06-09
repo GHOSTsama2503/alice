@@ -1,4 +1,7 @@
-.env
+# Private scripts
+privates/
+
+# Pyrogram session files
 *.session
 *.session-journal
 

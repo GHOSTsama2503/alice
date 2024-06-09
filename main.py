@@ -1,32 +1,27 @@
 #!/bin/python3
-from logging import getLogger, WARNING
-from modules.logger import log
-log.info("Initializing....")
+if __name__ == "__main__":
 
-from pyrogram import Client
-from pyrogram.enums.parse_mode import ParseMode
+    from modules.logger import log
+    log.info("Initializing....")
 
-pyrogram_logger = getLogger("pyrogram")
-pyrogram_logger.setLevel(WARNING)
+    import lib.env
+    import sys
 
-import env
-client = Client(
-    "bot",
-    api_id = env.API_ID,
-    api_hash = env.API_HASH,
-    bot_token = env.BOT_TOKEN,
-)
+    if len(sys.argv) == 2 and sys.argv[1] == "--test":
+        log.info("Starting in test mode...")
+        lib.env.PRODUCTION = False
 
-# Completely disable parsing fo peace of mind.
-client.set_parse_mode(ParseMode.DISABLED)
+    log.info("Loading language files...")
+    import modules.language as language
+    language.load()
 
-log.info("Loading plugins...")
-import plugins_loader
-import plugins
-plugins_loader.add_plugins(client, plugins)
+    from lib.app import bot, set_bot_commands
 
-log.info("Starting...")
-client.start()
+    log.info("Starting bot...")
+    bot.start()
 
-log.info("Started successfully.")
-client.loop.run_forever()
+    log.info("Setting bot commands...")
+    set_bot_commands()
+
+    log.info("Started successfully.")
+    bot.loop.run_forever()
