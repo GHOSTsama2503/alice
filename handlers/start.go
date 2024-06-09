@@ -16,7 +16,7 @@ func StartHandler(c telebot.Context) (err error) {
 		"user": sender.FirstName,
 		"me":   config.Env.ClientName,
 	}
-	if msg, err = i18n.T2("start_message", sender.LanguageCode, opts); err != nil {
+	if msg, err = i18n.T2(i18n.StartMessage, sender.LanguageCode, opts); err != nil {
 		return
 	}
 
