@@ -3,7 +3,6 @@ package handlers
 import (
 	"alice/env"
 	"alice/i18n"
-	"strings"
 
 	"gopkg.in/telebot.v3"
 )
@@ -12,10 +11,14 @@ func StartHandler(c telebot.Context) (err error) {
 
 	sender := c.Sender()
 
-	locale := i18n.GetLocale(sender.LanguageCode)
-
-	replacer := strings.NewReplacer("{user}", sender.FirstName, "{me}", env.ClientName)
-	msg := replacer.Replace(locale.StartMessagee)
+	var msg string
+	opts := i18n.Options{
+		"user": sender.FirstName,
+		"me":   env.ClientName,
+	}
+	if msg, err = i18n.T2("start_message", sender.LanguageCode, opts); err != nil {
+		return
+	}
 
 	if err = c.Reply(msg); err != nil {
 		return
