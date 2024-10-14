@@ -1,7 +1,5 @@
 package modules
 
-func Init() error {
-	InitStates()
+import "github.com/charmbracelet/log"
 
-	return nil
-}
+var logger = log.WithPrefix("[modules]")

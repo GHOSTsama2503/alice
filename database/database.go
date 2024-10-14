@@ -1,45 +1,21 @@
 package database
 
 import (
-	"alice/common/config"
-	"alice/database/queries"
-	"database/sql"
+	"github.com/ghostsama2503/alice/common/config"
 
-	"github.com/charmbracelet/log"
-	_ "github.com/tursodatabase/go-libsql"
+	_ "github.com/jackc/pgx/v5/stdlib"
+	"github.com/jmoiron/sqlx"
 )
 
-var Db *sql.DB
-var Query *queries.Queries
-var connected bool
+var DB *sqlx.DB
 
-func Init() (*sql.DB, error) {
-
-	db, err := sql.Open("libsql", config.Env.DatabaseUrl)
-	if err != nil {
-		return db, err
-	}
-
-	Db = db
-	Query = queries.New(db)
-	connected = true
-
-	return db, nil
-}
-
-func CheckConnection() (*sql.DB, error) {
-
+func Init() (*sqlx.DB, error) {
 	var err error
 
-	if !connected {
-		config.LoadEnv("../.env")
-
-		Db, err = Init()
-	}
-
+	DB, err = sqlx.Open("pgx", config.Env.DatabaseURL)
 	if err != nil {
-		log.Error("error checking database connection", "err", err)
+		return DB, err
 	}
 
-	return Db, err
+	return DB, nil
 }

@@ -1,7 +1,7 @@
 package tg_test
 
 import (
-	"alice/common/tg"
+	"github.com/ghostsama2503/alice/common/tg"
 	"testing"
 )
 

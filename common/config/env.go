@@ -9,8 +9,7 @@ type Environment struct {
 	BotToken string `env:"BOT_TOKEN"`
 
 	// database
-	DatabaseUrl    string `env:"DATABASE_URL" envDefault:"database.db"`
-	DatabaseSchema string `env:"DATABASE_SCHEMA"`
+	DatabaseURL string `env:"DATABASE_URL" envDefault:"database.db"`
 
 	// app
 	ClientName    string `env:"CLIENT_NAME"`

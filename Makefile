@@ -1,8 +1,18 @@
+.PHONY: install run test build
+
+INPUT=.
+OUTPUT=build/bot
+
+CMD=go build -trimpath -ldflags "-s -w"
+
 install:
-	go mod tidy
+	go mod download && go mod verify
 
 run:
-	go run cmd/main.go
+	go run ${INPUT}
+
+test:
+	go test ./...
 
 build:
-	go build -ldflags "-s -w" -o build/bot cmd/main.go
+	${CMD} -o ${OUTPUT} ${INPUT}

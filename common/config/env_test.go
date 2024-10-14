@@ -1,7 +1,7 @@
 package config_test
 
 import (
-	"alice/common/config"
+	"github.com/ghostsama2503/alice/common/config"
 	"testing"
 )
 
