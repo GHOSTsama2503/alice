@@ -18,7 +18,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if err := i18n.Init(); err != nil {
+	if err := i18n.Init(config.Env.DefaultLocale); err != nil {
 		log.Fatal(err)
 	}
 

@@ -8,17 +8,30 @@ import (
 	"github.com/pelletier/go-toml/v2"
 )
 
-type LanguageCode = string
-type Options = map[string]any
+type (
+	LocalesMap   = map[LanguageCode]*Locale
+	LanguageCode = string
+	Options      = map[string]any
+)
 
-const defaultLocale = "en"
+var (
+	//go:embed locales/*.toml
+	content  embed.FS
+	locales  = make(LocalesMap)
+	fallback string
+)
 
-var Locales = make(map[LanguageCode]*Locale)
+func Locales() LocalesMap {
+	return locales
+}
 
-//go:embed locales/*.toml
-var content embed.FS
+func Fallback() string {
+	return fallback
+}
 
-func Init() error {
+func Init(defaultLocale string) error {
+	fallback = defaultLocale
+
 	entries, err := content.ReadDir("locales")
 	if err != nil {
 		return err
@@ -55,24 +68,33 @@ func Init() error {
 			languageCode = name[:dotIndex]
 		}
 
-		Locales[languageCode] = locale
+		locales[languageCode] = locale
+	}
+
+	return check()
+}
+
+func check() error {
+	locale := GetLocale(fallback)
+	if locale.LocaleName == "" {
+		return ErrNameEmpty
 	}
 
 	return nil
 }
 
-func GetLocale(code LanguageCode) (*Locale, error) {
-	locale, ok := Locales[code]
+func GetLocale(code LanguageCode) *Locale {
+	locale, ok := locales[code]
 	if ok {
-		return locale, nil
+		return locale
 	}
 
-	locale, ok = Locales[defaultLocale]
+	locale, ok = locales[fallback]
 	if ok {
-		return locale, nil
+		return locale
 	}
 
-	return nil, ErrNotFound
+	return new(Locale)
 }
 
 func WithOptions(text string, opts Options) string {

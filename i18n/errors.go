@@ -3,5 +3,5 @@ package i18n
 import "errors"
 
 var (
-	ErrNotFound = errors.New("i18n: locale not found")
+	ErrNameEmpty = errors.New("i18n: default locale name is empty")
 )

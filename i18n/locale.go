@@ -1,6 +1,8 @@
 package i18n
 
 type Locale struct {
+	LocaleName string `toml:"locale_name"`
+
 	ChatSettings           string `toml:"chat_settings"`
 	CustomizeMessage       string `toml:"customize_message"`
 	Disable                string `toml:"disable"`

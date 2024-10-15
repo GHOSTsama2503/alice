@@ -3,15 +3,13 @@ package bot
 import (
 	"github.com/ghostsama2503/alice/common/config"
 	"github.com/ghostsama2503/alice/i18n"
+	"github.com/ghostsama2503/alice/modules"
 
 	"github.com/aquagram/aquagram"
 )
 
-func StartCommandHandler(_ *aquagram.Bot, message *aquagram.Message) error {
-	locale, err := i18n.GetLocale(message.From.LanguageCode)
-	if err != nil {
-		return err
-	}
+func StartCommandHandler(bot *aquagram.Bot, message *aquagram.Message) error {
+	locale := modules.GetLocale(bot.Context(), message)
 
 	opts := i18n.Options{
 		"user": message.From.TextMention(aquagram.ParseModeHtml),
@@ -20,7 +18,7 @@ func StartCommandHandler(_ *aquagram.Bot, message *aquagram.Message) error {
 
 	text := i18n.WithOptions(locale.StartMessage, opts)
 
-	_, err = message.Reply(text, &aquagram.SendMessageParams{
+	_, err := message.Reply(text, &aquagram.SendMessageParams{
 		ParseMode: aquagram.ParseModeHtml,
 	})
 
