@@ -3,7 +3,7 @@ module github.com/ghostsama2503/alice
 go 1.22.3
 
 require (
-	github.com/aquagram/aquagram v0.8.0
+	github.com/aquagram/aquagram v0.9.0
 	github.com/caarlos0/env/v11 v11.0.1
 	github.com/charmbracelet/log v0.4.0
 	github.com/jackc/pgx/v5 v5.7.1
