@@ -4,6 +4,8 @@ github.com/aquagram/aquagram v0.8.0 h1:EpZeT8eQETp2OiNZVZ5a2qYkfTh/yWye/4CkdzUNH
 github.com/aquagram/aquagram v0.8.0/go.mod h1:HtbaxH65LJxDt+bweNCDgWMKQEfkeQ7xKM8UphddhTg=
 github.com/aquagram/aquagram v0.9.0 h1:/eKkA7VBQIY9YQ2b4dzmp2D7IyBCtrA2xeBIoXXRHpk=
 github.com/aquagram/aquagram v0.9.0/go.mod h1:HtbaxH65LJxDt+bweNCDgWMKQEfkeQ7xKM8UphddhTg=
+github.com/aquagram/aquagram v0.9.1 h1:NVLZ5JaL2TjtL9raQQGGi+Zo/+IUSmjcjKVRR/MiRXw=
+github.com/aquagram/aquagram v0.9.1/go.mod h1:HtbaxH65LJxDt+bweNCDgWMKQEfkeQ7xKM8UphddhTg=
 github.com/aymanbagabas/go-osc52/v2 v2.0.1 h1:HwpRHbFMcZLEVr42D4p7XBqjyuxQH5SMiErDT4WkJ2k=
 github.com/aymanbagabas/go-osc52/v2 v2.0.1/go.mod h1:uYgXzlJ7ZpABp8OJ+exZzJJhRNQ2ASbcXHWsFqH8hp8=
 github.com/caarlos0/env/v11 v11.0.1 h1:A8dDt9Ub9ybqRSUF3fQc/TA/gTam2bKT4Pit+cwrsPs=
